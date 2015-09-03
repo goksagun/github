@@ -68,22 +68,6 @@ class AuthController extends Controller
             Auth::login($userLogin);
         }
 
-//        dd($user, $userData);
-
         return redirect('/')->withMessage(['success' => "Login successful."]);
-
-//        // OAuth Two Providers
-//        $token = $user->token;
-//
-//        // OAuth One Providers
-//        $token = $user->token;
-//        $tokenSecret = $user->tokenSecret;
-//
-//        // All Providers
-//        $user->getId();
-//        $user->getNickname();
-//        $user->getName();
-//        $user->getEmail();
-//        $user->getAvatar();
     }
 }
