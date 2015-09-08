@@ -2,31 +2,25 @@
 
 namespace App\Http\Controllers;
 
+
 use Github\Client;
 use Github\Pagination;
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Cache;
 
 class HomeController extends Controller
 {
     private $client;
 
     private $token;
-    private $username;
 
     public function __construct(Client $client)
     {
         $this->client = $client;
         $this->token = session('github.token')[0];
-        $this->username = session('github.username')[0];
 
-//        $this->client->authenticate($this->username, $this->token, Client::AUTH_URL_TOKEN);
-//        $this->client->authenticate($this->token, null, Client::AUTH_URL_TOKEN);
-//        dd(Client::AUTH_HTTP_TOKEN);
-//        $this->client->authenticate(null, $this->token, Client::AUTH_HTTP_TOKEN);
+        $this->client->auth($this->token);
     }
 
     /**
@@ -36,19 +30,7 @@ class HomeController extends Controller
      */
     public function getIndex()
     {
-
-        $this->client->auth($this->token);
-
-//        $repositories = $this->client->user();
-//        $repositories = $this->client->users($this->username);
-//        $repositories = $this->client->allUsers(30);
-        $repositories = $this->client->userRepos();
-//        $repositories = $this->client->usersRepos($this->username);
-//        $repositories = $this->client->orgsRepos('twitter', ['type' => 'private']);
-//        $repositories = $this->client->publicRepos(['since' => 30]);
-//        $repositories = $this->client->ownerRepo('goksagun', 'bayes');
-
-        $repositories = $repositories->toArray();
+        $repositories = $this->client->userRepos()->toArray();
 
         return view('home', compact('repositories'));
     }

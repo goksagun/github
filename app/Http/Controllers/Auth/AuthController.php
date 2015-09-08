@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
+
 use App\User;
 use Auth;
 use Config;
 use Socialite;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
+use App\Http\Controllers\Controller;
 
 class AuthController extends Controller
 {

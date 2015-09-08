@@ -2,6 +2,7 @@
 
 namespace Github;
 
+
 use Github\Contracts\Authenticate;
 use Github\Contracts\Cache;
 use Github\Contracts\Github;
@@ -11,6 +12,9 @@ class Client extends AbstractClient implements Github, Authenticate, Cache
     protected $endpoint = 'https://api.github.com';
 
     /**
+     * Authenticate user with OAuth token.
+     * -----------------------------------------------------------
+     *
      * @param $token
      */
     public function auth($token)
