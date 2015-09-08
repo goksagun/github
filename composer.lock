@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3e27df674c32d07fdf903e3e8fd3638e",
+    "hash": "7e21e4ae0b9109115ecda468c77364cd",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -215,128 +215,6 @@
                 "string"
             ],
             "time": "2014-12-20 21:24:13"
-        },
-        {
-            "name": "graham-campbell/github",
-            "version": "v4.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/GrahamCampbell/Laravel-GitHub.git",
-                "reference": "936c59babeca6fb6ff641691893f43913b1cb24c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-GitHub/zipball/936c59babeca6fb6ff641691893f43913b1cb24c",
-                "reference": "936c59babeca6fb6ff641691893f43913b1cb24c",
-                "shasum": ""
-            },
-            "require": {
-                "graham-campbell/manager": "~2.2",
-                "illuminate/contracts": "5.0.*|5.1.*",
-                "illuminate/support": "5.0.*|5.1.*",
-                "knplabs/github-api": "~1.3",
-                "php": ">=5.5.9"
-            },
-            "require-dev": {
-                "graham-campbell/testbench": "~3.0",
-                "mockery/mockery": "^0.9.4",
-                "phpunit/phpunit": "^4.7.6"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "4.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "GrahamCampbell\\GitHub\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Graham Campbell",
-                    "email": "graham@alt-three.com"
-                }
-            ],
-            "description": "GitHub Is A GitHub Bridge For Laravel 5",
-            "keywords": [
-                "Bridge",
-                "Graham Campbell",
-                "GrahamCampbell",
-                "Laravel GitHub",
-                "Laravel-GitHub",
-                "PHP GitHub API",
-                "framework",
-                "github",
-                "github bridge",
-                "laravel",
-                "php-github-api"
-            ],
-            "time": "2015-06-26 17:47:16"
-        },
-        {
-            "name": "graham-campbell/manager",
-            "version": "v2.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/GrahamCampbell/Laravel-Manager.git",
-                "reference": "b386c08594a3e1ff7d0f3401d545460f609c6c1e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-Manager/zipball/b386c08594a3e1ff7d0f3401d545460f609c6c1e",
-                "reference": "b386c08594a3e1ff7d0f3401d545460f609c6c1e",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/contracts": "5.0.*|5.1.*",
-                "illuminate/support": "5.0.*|5.1.*",
-                "php": ">=5.5.9"
-            },
-            "require-dev": {
-                "graham-campbell/testbench-core": "~1.0",
-                "mockery/mockery": "^0.9.4",
-                "phpunit/phpunit": "^4.7.6"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.2-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "GrahamCampbell\\Manager\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Graham Campbell",
-                    "email": "graham@alt-three.com"
-                }
-            ],
-            "description": "Manager Provides Some Manager Functionality For Laravel 5",
-            "keywords": [
-                "Graham Campbell",
-                "GrahamCampbell",
-                "Laravel Manager",
-                "Laravel-Manager",
-                "connector",
-                "framework",
-                "interface",
-                "laravel",
-                "manager"
-            ],
-            "time": "2015-06-26 17:39:20"
         },
         {
             "name": "guzzle/guzzle",
@@ -750,78 +628,17 @@
             "time": "2015-03-11 20:06:43"
         },
         {
-            "name": "knplabs/github-api",
-            "version": "1.4.14",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/KnpLabs/php-github-api.git",
-                "reference": "9010dbe21f4b0bae0edae26bbe031d7d91347938"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/php-github-api/zipball/9010dbe21f4b0bae0edae26bbe031d7d91347938",
-                "reference": "9010dbe21f4b0bae0edae26bbe031d7d91347938",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "guzzle/guzzle": "~3.7",
-                "php": ">=5.3.2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0"
-            },
-            "suggest": {
-                "knplabs/gaufrette": "Needed for optional Gaufrette cache"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.4.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Github\\": "lib/Github/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Thibault Duplessis",
-                    "email": "thibault.duplessis@gmail.com",
-                    "homepage": "http://ornicar.github.com"
-                },
-                {
-                    "name": "KnpLabs Team",
-                    "homepage": "http://knplabs.com"
-                }
-            ],
-            "description": "GitHub API v3 client",
-            "homepage": "https://github.com/KnpLabs/php-github-api",
-            "keywords": [
-                "api",
-                "gh",
-                "gist",
-                "github"
-            ],
-            "time": "2015-07-03 14:59:20"
-        },
-        {
             "name": "laravel/framework",
-            "version": "v5.1.12",
+            "version": "v5.1.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "76a9816f37a58383f6ba093ccf08f253e5488555"
+                "reference": "e34dcc0c57e0f560248aec5128161256ff8bf4e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/76a9816f37a58383f6ba093ccf08f253e5488555",
-                "reference": "76a9816f37a58383f6ba093ccf08f253e5488555",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/e34dcc0c57e0f560248aec5128161256ff8bf4e1",
+                "reference": "e34dcc0c57e0f560248aec5128161256ff8bf4e1",
                 "shasum": ""
             },
             "require": {
@@ -936,7 +753,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2015-08-30 23:25:48"
+            "time": "2015-09-04 12:46:14"
         },
         {
             "name": "laravel/socialite",
@@ -994,16 +811,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.11",
+            "version": "1.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "c16222fdc02467eaa12cb6d6d0e65527741f6040"
+                "reference": "7323424a9d39c24e597ed3f2144419dfbb52e086"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/c16222fdc02467eaa12cb6d6d0e65527741f6040",
-                "reference": "c16222fdc02467eaa12cb6d6d0e65527741f6040",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/7323424a9d39c24e597ed3f2144419dfbb52e086",
+                "reference": "7323424a9d39c24e597ed3f2144419dfbb52e086",
                 "shasum": ""
             },
             "require": {
@@ -1071,7 +888,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2015-07-28 20:41:58"
+            "time": "2015-09-05 12:06:41"
         },
         {
             "name": "league/oauth1-client",

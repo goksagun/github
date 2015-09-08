@@ -42,9 +42,7 @@ $app->singleton(
 );
 
 $app->singleton('Github\Client', function () {
-    $client = new Github\Client(
-        new Github\HttpClient\CachedHttpClient(array('cache_dir' => '/storage/github'))
-    );
+    $client = new Github\Client();
     return $client;
 });
 

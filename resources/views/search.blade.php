@@ -4,7 +4,10 @@
 
 @section('content')
     <div class="page-header">
-        <h1>Search {{ $query ? "for: $query" : "" }}</h1>
+        <h1>Search {!! $query ? "for: <span class='text-muted'>$query</span>" : "" !!}</h1>
+        @if($query)
+            <p>total {{ $repositories['total_count'] }} repo found, showing {{ count($repositories['items']) }} items</p>
+        @endif
     </div>
 
     <div class="row">
@@ -28,7 +31,7 @@
         <hr>
 
         <div class="list-group">
-            @foreach($repositories as $repo)
+            @foreach($repositories['items'] as $repo)
                 <a href="{{ $repo['url'] }}" target="_blank" class="list-group-item">
                     <h4 class="list-group-item-heading">{{ $repo['name'] }}</h4>
                     <p class="list-group-item-text">{{ $repo['description'] }}</p>
@@ -37,13 +40,7 @@
         </div>
 
         <nav>
-            <ul class="pagination">
-                <li class="{{ $pagination['previous']['disabled'] ? 'disabled':'' }}"><a href="{{ $pagination['previous']['url'] }}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-                @foreach($pagination['links'] as $link)
-                <li class="{{ $link['active'] ? 'active':'' }}"><a href="{{ $link['url'] }}">{{ $link['page'] }} {!! $link['active'] ? '<span class="sr-only">(current)</span>':'' !!}</a></li>
-                @endforeach
-                <li class="{{ $pagination['next']['disabled'] ? 'disabled':'' }}"><a href="{{ $pagination['next']['url'] }}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
-            </ul>
+            {!! $pagination->render() !!}
         </nav>
     @endif
 

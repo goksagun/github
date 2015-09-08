@@ -15,12 +15,12 @@ class AuthController extends Controller
     {
         return view('auth.login');
     }
+
     public function getLogout(Request $request)
     {
         Auth::logout();
 
-        $request->session()->forget('github.token');
-        $request->session()->forget('github.username');
+        $request->session()->forget('github');
 
         return redirect('auth/login');
     }

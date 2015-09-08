@@ -41,10 +41,4 @@ return [
         'redirect' => 'http://github-client.local/auth/github/callback',
     ],
 
-    'twitter' => [
-        'client_id' => env('TWITTER_KEY'),
-        'client_secret' => env('TWITTER_SECRET'),
-        'redirect' => 'http://github-client.local/auth/twitter/callback',
-    ]
-
 ];

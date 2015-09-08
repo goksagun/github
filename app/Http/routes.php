@@ -11,11 +11,10 @@
 |
 */
 
-/**
- * Test route
- * Used for GitHub api testing
- */
-Route::get('git', 'HomeController@getGit');
+
+Route::get('test', function () {
+    return str_random(32);
+});
 
 /**
  * Authenticated routes

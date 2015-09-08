@@ -147,7 +147,7 @@ return [
 
         Laravel\Socialite\SocialiteServiceProvider::class,
 
-        GrahamCampbell\GitHub\GitHubServiceProvider::class,
+//        GrahamCampbell\GitHub\GitHubServiceProvider::class,
 
     ],
 
@@ -200,7 +200,7 @@ return [
 
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
-        'GitHub'    => GrahamCampbell\GitHub\Facades\GitHub::class,
+//        'GitHub'    => GrahamCampbell\GitHub\Facades\GitHub::class,
 
     ],
 

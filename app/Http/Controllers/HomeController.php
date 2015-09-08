@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Github\Client;
+use Github\Pagination;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
 
 class HomeController extends Controller
 {
@@ -21,7 +23,10 @@ class HomeController extends Controller
         $this->token = session('github.token')[0];
         $this->username = session('github.username')[0];
 
-        $this->client->authenticate(null, $this->token, Client::AUTH_URL_TOKEN);
+//        $this->client->authenticate($this->username, $this->token, Client::AUTH_URL_TOKEN);
+//        $this->client->authenticate($this->token, null, Client::AUTH_URL_TOKEN);
+//        dd(Client::AUTH_HTTP_TOKEN);
+//        $this->client->authenticate(null, $this->token, Client::AUTH_HTTP_TOKEN);
     }
 
     /**
@@ -31,7 +36,19 @@ class HomeController extends Controller
      */
     public function getIndex()
     {
-        $repositories = $this->client->api('user')->repositories($this->username);
+
+        $this->client->auth($this->token);
+
+//        $repositories = $this->client->user();
+//        $repositories = $this->client->users($this->username);
+//        $repositories = $this->client->allUsers(30);
+        $repositories = $this->client->userRepos();
+//        $repositories = $this->client->usersRepos($this->username);
+//        $repositories = $this->client->orgsRepos('twitter', ['type' => 'private']);
+//        $repositories = $this->client->publicRepos(['since' => 30]);
+//        $repositories = $this->client->ownerRepo('goksagun', 'bayes');
+
+        $repositories = $repositories->toArray();
 
         return view('home', compact('repositories'));
     }
@@ -45,73 +62,19 @@ class HomeController extends Controller
     public function getSearch(Request $request)
     {
         $query = $request->input('q', '');
-        $page = $request->input('p', 1);
-
-        $pagination = $this->setPager($page, $query);
+        $page = intval($request->input('p', 1));
+        $perPage = intval($request->input('pp', 30));
 
         $repositories = [];
 
         if ($query) {
-            $repositories = $this->client->api('repo')->find($query, array('start_page' => $page));
-            $repositories = $repositories['repositories'];
+            $repositories = $this->client->search(['q' => $query, 'page' => $page, 'per_page' => $perPage])->toArray();
+
+            $total = $repositories['total_count'];
+
+            $pagination = new Pagination($page, $query, $total, $perPage);
         }
 
         return view('search', compact('repositories', 'query', 'pagination'));
-    }
-
-    /**
-     * For testing only not used app.
-     *
-     * @return \Psr\Http\Message\StreamInterface
-     */
-    public function getGit()
-    {
-        $client = new \GuzzleHttp\Client();
-        $res = $client->get('https://api.github.com/search/repositories?q=symfony&sort=stars&order=desc&page=1&per_page=10');
-
-        return $res->getBody();
-    }
-
-    /**
-     * Set pager for search results.
-     *
-     * @param int $page
-     * @param string $query
-     * @param int $pagerCount
-     * @return array
-     */
-    protected function setPager($page = 1, $query = '', $pagerCount = 5)
-    {
-        $previousPage = $page - 1;
-        $nextPage = $page + $pagerCount;
-
-        for ($i = $page; $i < $nextPage; $i++) {
-            $links[] = [
-                'active' => ($page == $i),
-                'page' => $i,
-                'url' => '/search?' . http_build_query(['q' => $query, 'p' => $i])
-            ];
-        }
-
-        if ($previousPage == 0) {
-            $previous = http_build_query(['q' => $query]);
-        } else {
-            $previous = http_build_query(['q' => $query, 'p' => $previousPage]);
-        }
-        $next = http_build_query(['q' => $query, 'p' => $nextPage]);
-
-        $pagination = [
-            'previous' => [
-                'disabled' => ($previousPage == 0),
-                'url' => '/search?' . $previous
-            ],
-            'links' => $links,
-            'next' => [
-                'disabled' => ($nextPage == 0),
-                'url' => '/search?' . $next
-            ],
-            'current' => $page
-        ];
-        return $pagination;
     }
 }
